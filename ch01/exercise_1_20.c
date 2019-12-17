@@ -22,6 +22,7 @@ main()
 			pos = 1;
 		}else{
 			putchar(c);
+			pos++;
 		}
 	}
 	
