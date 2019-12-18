@@ -11,6 +11,6 @@ int main()
 	
 	printf("min signed char:%d\n", - (unsigned char) ~0 >> 1);
 	printf("max signed char:%d\n", (unsigned char) ~0 >> 1);
-	printf("max unsigned char:%d\n", (unsigned char) i);
+	printf("max unsigned char:%d\n", (unsigned char) ~0);
 	return 0;
 }
