@@ -1,22 +1,24 @@
+//练习4-2 对atof函数进行扩充,使它可以处理形如123.45е-6的科学表示法,其中,浮点数后面可能会紧跟一个e或E以及一个指数(可能有正负号)。
+
+#define MAXLINE 1000
+
 #include <ctype.h>
 #include <stdio.h>
-
-#define MAXLINE 100
 
 /* rudimentary calculator */
 int main()
 {
    double sum, atof(char []);
    char line[MAXLINE];
-   int getline(char line[], int max);
-   sum = 0;
-   while (getline(line, MAXLINE) > 0)
-	   printf("\t%g\n", sum += atof(line));
+   int getline1(char line[], int max);
+
+   while (getline1(line, MAXLINE) > 0)
+	   printf("\t%g\n", atof(line));
    return 0;
 }
 
 /* getline:  get line into s, return length */
-int getline(char s[], int lim)
+int getline1(char s[], int lim)
 {
    int c, i;
    i = 0;
