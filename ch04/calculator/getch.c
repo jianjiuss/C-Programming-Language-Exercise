@@ -1,7 +1,10 @@
 #include <stdio.h>
 #define BUFSIZE 100
+//Exercise 4-8
+//#define BUFSIZE 1
 
-static char buf[BUFSIZE];    /* buffer for ungetch */
+//Exercise 4-9
+static int buf[BUFSIZE];    /* buffer for ungetch */
 static int bufp = 0;         /* next free position in buf */
 int getch(void)  /* get a (possibly pushed-back) character */
 {

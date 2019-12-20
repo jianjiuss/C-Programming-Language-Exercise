@@ -5,4 +5,5 @@
 #define NAME 'n'
 
 int getop(char[]);
+void ungets(char[]);
 #endif

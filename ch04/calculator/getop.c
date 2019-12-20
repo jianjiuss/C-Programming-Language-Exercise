@@ -48,3 +48,12 @@ int getop(char s[])
 	   ungetch(c);
    return NUMBER;
 }
+
+//Exercise 4-7
+void ungets(char s[])
+{
+	int i;
+	for(i = 0; s[i] != '\0'; i++);
+	while(i > 0)
+		ungetch(s[--i]);
+}

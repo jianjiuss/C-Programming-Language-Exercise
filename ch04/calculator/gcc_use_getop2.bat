@@ -1,0 +1,1 @@
+gcc getop2.c stack.c main.c getline1.c

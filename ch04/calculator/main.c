@@ -7,6 +7,7 @@
 #include "stack.h"
 
 #define MAXOP 100  /* max size of operand or operator */
+#define CHNUM 26
 
 void mathfnc(char*);
 
@@ -14,8 +15,11 @@ void mathfnc(char*);
 int main()
 {
 	int type;
-	double op1,op2;
-	char s[MAXOP];
+	double op1, op2, lastResult, variable[CHNUM];
+	char s[MAXOP], variablech;
+	
+	memset(variable, 0, sizeof(double) * CHNUM);
+	
 	while ((type = getop(s)) != EOF) {
 		switch (type) {
 			case NUMBER:
@@ -34,6 +38,13 @@ int main()
 			   op2 = pop();
 			   push(pop() - op2);
 			   break;
+		   //Exercise 4-6
+			case '=':
+			   op2 = pop();
+			   pop();
+			   push(variable[variablech - 'A'] = op2);
+			   printf("%c = %f\n", variablech, op2);
+			   break;
 		   //Exercise 4-3
 			case '%':
 			   op2 = pop();
@@ -51,9 +62,9 @@ int main()
 			   break;
 		   //Exercise 4-4
 			case '?':
-				op2 = pop();
-				printf("\t%.8g\n", op2);
-				push(op2);
+				op1 = pop();
+				printf("\t%.8g\n", op1);
+				push(op1);
 				break;
 			case 'c':
 				clear();
@@ -70,10 +81,18 @@ int main()
 				push(op2);
 				break;
 		   case '\n':
-			   printf("\t%.8g\n", pop());
+			   lastResult = pop();
+			   printf("\t%.8g\n", lastResult);
 			   break;
 		   default:
-			   printf("error: unknown command %s\n", s);
+			   if(type >= 'A' && type <= 'Z'){
+				   variablech = type;
+				   push(variable[type - 'A']);				   
+			   }
+			   else if(type == 'v')
+				   push(lastResult);
+			   else
+				   printf("error: unknown command %s\n", s);
 			   break;
 	   }
 	}

@@ -6,9 +6,9 @@ int binsearch(int x, int v[], int n);
 
 int main()
 {
-	int v[] = {1,3,5,6,7,8,9,10};
+	int v[] = {-1,0,3,5,9,12};
 	
-	printf("find 5 in [1,3,5,6,7,8,9,10]. index : %d", binsearch(5, v, 8));
+	printf("find 5 in [1,3,5,6,7,8,9,10]. index : %d", binsearch(2, v, 6));
 }
 
 /* binsearch:  find x in v[0] <= v[1] <= ... <= v[n-1] */
@@ -20,7 +20,7 @@ int binsearch(int x, int v[], int n)
    mid = (low+high)/2;
    while (low <= high && v[mid] != x) {
 	   if (x < v[mid])
-		   high = mid + 1;
+		   high = mid - 1;
 	   else if (x  > v[mid])
 		   low = mid + 1;
 	   mid = (low+high)/2;
